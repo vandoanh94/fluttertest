@@ -29,16 +29,16 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
   List<CardContainer> cards = [
-    new CardContainer(Color(0xFFe0e0e0), 1),
-    new CardContainer(Color(0xFFb3b3b3), 2),
-    new CardContainer(Color(0xFF808080), 3),
-    new CardContainer(Color(0xFF262626), 4),
-    new CardContainer(Color(0xFF000000), 5),
-    new CardContainer(Color(0xff2980b9), 6),
-    new CardContainer(Color(0xFF808080), 7),
-    new CardContainer(Color(0xFFb3b3b3), 8),
-    new CardContainer(Color(0xFFb3b3b3), 9),
-    new CardContainer(Color(0xFF262626), 10),
+    new CardContainer(1,Color(0xFFe0e0e0), 0),
+    new CardContainer(2,Color(0xFFb3b3b3), 0),
+    new CardContainer(3,Color(0xFF808080), 0),
+    new CardContainer(4,Color(0xFF262626), 0),
+    new CardContainer(5,Color(0xFF000000), 0),
+    new CardContainer(6,Color(0xff2980b9), 0),
+    new CardContainer(7,Color(0xFF808080), 0),
+    new CardContainer(8,Color(0xFFb3b3b3), 0),
+    new CardContainer(9,Color(0xFFb3b3b3), 0),
+    new CardContainer(10,Color(0xFF262626), 0),
   ];
   void initState() {
       _currentCardContainer = cards[0];
@@ -58,7 +58,10 @@ class _MyHomePageState extends State<MyHomePage> {
           Cards(cards, callback: (val) => setState(() => {
             _currentCardContainer = val
             })),
-          CardDetail(_currentCardContainer)
+          CardDetail(_currentCardContainer, callback: (val) => setState(() => {
+            _currentCardContainer = val,
+                                          print(_currentCardContainer.number.toString())
+            }))
         ]    
       )
     );
